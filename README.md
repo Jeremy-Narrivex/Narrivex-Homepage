@@ -41,6 +41,15 @@ The GitHub Actions workflow at `.github/workflows/static.yml` automatically depl
 2. Configure the DNS records GitHub Pages provides for the domain.
 3. Enforce HTTPS after GitHub verifies the domain.
 
+### Search Engine Indexing
+
+1. Verify ownership of `https://narrivex.com` in [Google Search Console](https://search.google.com/search-console) and [Bing Webmaster Tools](https://www.bing.com/webmasters/).
+2. Submit `https://narrivex.com/sitemap.xml` to each service.
+
+## Contribution Protection
+
+The `main` branch requires one approving pull-request review and a successful **Validate static site files** check before changes can merge. GitHub Pages deploys only after a change reaches `main`.
+
 ## Local Development
 
 To view the site locally:
@@ -63,11 +72,14 @@ To view the site locally:
 ```
 website/
 ├── index.html          # Main HTML file
+├── 404.html            # Branded not-found page
 ├── styles.css          # CSS styles
 ├── script.js           # JavaScript functionality
 ├── CNAME               # GitHub Pages custom domain
 ├── .github/workflows/  # GitHub Pages deployment workflow
 ├── assets/             # Images and other assets
+├── robots.txt          # Search crawler directives
+├── sitemap.xml         # Search engine sitemap
 ├── README.md           # This file
 └── LICENSE             # MIT License
 ```

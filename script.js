@@ -52,6 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     acceptAnalytics.addEventListener('click', () => setAnalyticsConsent('accepted'));
     rejectAnalytics.addEventListener('click', () => setAnalyticsConsent('rejected'));
 
+    document.querySelectorAll('[data-analytics-event]').forEach(element => {
+        element.addEventListener('click', () => {
+            if (localStorage.getItem(analyticsConsentKey) === 'accepted') {
+                window.gtag('event', element.dataset.analyticsEvent);
+            }
+        });
+    });
+
     const updateNavigation = () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
