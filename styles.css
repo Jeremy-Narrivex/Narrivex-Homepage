@@ -135,6 +135,10 @@ button,
     font: inherit;
 }
 
+button.btn {
+    cursor: pointer;
+}
+
 main {
     display: block;
 }

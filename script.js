@@ -7,6 +7,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const acceptAnalytics = document.getElementById('accept-analytics');
     const rejectAnalytics = document.getElementById('reject-analytics');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let sessionAnalyticsConsent = null;
+    const isStorageUnavailable = error => error.name === 'SecurityError' || error.name === 'QuotaExceededError';
+
+    const getAnalyticsConsent = () => {
+        try {
+            return localStorage.getItem(analyticsConsentKey);
+        } catch (error) {
+            if (!isStorageUnavailable(error)) {
+                throw error;
+            }
+
+            return sessionAnalyticsConsent;
+        }
+    };
+
+    const saveAnalyticsConsent = consent => {
+        sessionAnalyticsConsent = consent;
+
+        try {
+            localStorage.setItem(analyticsConsentKey, consent);
+        } catch (error) {
+            if (!isStorageUnavailable(error)) {
+                throw error;
+            }
+        }
+    };
 
     const loadAnalytics = () => {
         if (document.getElementById('google-analytics')) {
@@ -28,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const setAnalyticsConsent = consent => {
-        localStorage.setItem(analyticsConsentKey, consent);
         consentBanner.hidden = true;
+        saveAnalyticsConsent(consent);
 
         if (consent === 'accepted') {
             loadAnalytics();
@@ -37,11 +63,20 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     if (new URLSearchParams(window.location.search).has('privacy-settings')) {
-        localStorage.removeItem(analyticsConsentKey);
+        sessionAnalyticsConsent = null;
+
+        try {
+            localStorage.removeItem(analyticsConsentKey);
+        } catch (error) {
+            if (!isStorageUnavailable(error)) {
+                throw error;
+            }
+        }
+
         window.history.replaceState({}, '', window.location.pathname);
     }
 
-    const analyticsConsent = localStorage.getItem(analyticsConsentKey);
+    const analyticsConsent = getAnalyticsConsent();
 
     if (analyticsConsent === 'accepted') {
         loadAnalytics();
@@ -54,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('[data-analytics-event]').forEach(element => {
         element.addEventListener('click', () => {
-            if (localStorage.getItem(analyticsConsentKey) === 'accepted') {
+            if (getAnalyticsConsent() === 'accepted') {
                 window.gtag('event', element.dataset.analyticsEvent);
             }
         });
