@@ -87,6 +87,10 @@ body {
     box-shadow: var(--shadow-lg);
 }
 
+.consent-banner[hidden] {
+    display: none;
+}
+
 .consent-banner h2,
 .consent-banner p {
     margin: 0;
