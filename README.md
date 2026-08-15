@@ -20,7 +20,7 @@ Narrivex is a product studio focused on AI tools for investigation, writing, eng
 - Fully responsive across mobile, tablet, and desktop
 - Clear project cards for all four Narrivex products
 - SEO-friendly semantic HTML and social sharing metadata
-- Lightweight static site suitable for Cloud Run or custom container hosting
+- Lightweight static site deployed through GitHub Pages
 
 ## Technology Stack
 
@@ -31,30 +31,15 @@ Narrivex is a product studio focused on AI tools for investigation, writing, eng
 
 ## Deployment
 
-### Google Cloud Run
+### GitHub Pages
 
-1. Build and run the container locally:
-   ```bash
-   docker build -t narrivex-website .
-   docker run --rm -p 8080:8080 narrivex-website
-   ```
-
-2. Deploy the site to Cloud Run:
-   ```bash
-   gcloud run deploy narrivex-website \
-     --source . \
-     --platform managed \
-     --region us-central1 \
-     --allow-unauthenticated
-   ```
-
-3. Map `narrivex.com` to the Cloud Run service with Google Cloud domain mapping after deployment.
+The GitHub Actions workflow at `.github/workflows/static.yml` automatically deploys the static site whenever changes are pushed to `main`. In the repository settings, set **Pages** → **Build and deployment** → **Source** to **GitHub Actions**.
 
 ### Custom Domain
 
-1. Use Cloud Run domain mapping for `narrivex.com` or `www.narrivex.com`.
-2. Follow the DNS records that Google Cloud provides for the mapping.
-3. Once DNS propagates, Cloud Run will serve the site on your domain.
+1. In **Settings** → **Pages**, set the custom domain to `narrivex.com`.
+2. Configure the DNS records GitHub Pages provides for the domain.
+3. Enforce HTTPS after GitHub verifies the domain.
 
 ## Local Development
 
@@ -71,7 +56,7 @@ To view the site locally:
    python -m http.server 8000
    ```
 
-3. Visit `http://localhost:8000` in your browser, or `http://localhost:8080` if you are running the container.
+3. Visit `http://localhost:8000` in your browser.
 
 ## File Structure
 
@@ -80,8 +65,8 @@ website/
 ├── index.html          # Main HTML file
 ├── styles.css          # CSS styles
 ├── script.js           # JavaScript functionality
-├── Dockerfile          # Cloud Run container definition
-├── nginx.conf          # Nginx configuration for the container
+├── CNAME               # GitHub Pages custom domain
+├── .github/workflows/  # GitHub Pages deployment workflow
 ├── assets/             # Images and other assets
 ├── README.md           # This file
 └── LICENSE             # MIT License

@@ -1,7 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const analyticsConsentKey = 'narrivex-analytics-consent';
     const navbar = document.getElementById('navbar');
     const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
     const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const consentBanner = document.getElementById('consent-banner');
+    const acceptAnalytics = document.getElementById('accept-analytics');
+    const rejectAnalytics = document.getElementById('reject-analytics');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const loadAnalytics = () => {
+        if (document.getElementById('google-analytics')) {
+            return;
+        }
+
+        const analyticsScript = document.createElement('script');
+        analyticsScript.id = 'google-analytics';
+        analyticsScript.async = true;
+        analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3WRZ8ZZQ9X';
+        document.head.append(analyticsScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', 'G-3WRZ8ZZQ9X');
+    };
+
+    const setAnalyticsConsent = consent => {
+        localStorage.setItem(analyticsConsentKey, consent);
+        consentBanner.hidden = true;
+
+        if (consent === 'accepted') {
+            loadAnalytics();
+        }
+    };
+
+    if (new URLSearchParams(window.location.search).has('privacy-settings')) {
+        localStorage.removeItem(analyticsConsentKey);
+        window.history.replaceState({}, '', window.location.pathname);
+    }
+
+    const analyticsConsent = localStorage.getItem(analyticsConsentKey);
+
+    if (analyticsConsent === 'accepted') {
+        loadAnalytics();
+    } else if (!analyticsConsent) {
+        consentBanner.hidden = false;
+    }
+
+    acceptAnalytics.addEventListener('click', () => setAnalyticsConsent('accepted'));
+    rejectAnalytics.addEventListener('click', () => setAnalyticsConsent('rejected'));
 
     const updateNavigation = () => {
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -52,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             window.scrollTo({
                 top: offsetTop,
-                behavior: 'smooth'
+                behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
             });
         });
     });

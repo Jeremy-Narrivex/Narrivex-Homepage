@@ -68,6 +68,50 @@ body {
     outline-offset: 2px;
 }
 
+.consent-banner {
+    position: fixed;
+    z-index: 1000;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    max-width: 48rem;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-md);
+    background: var(--surface-strong);
+    box-shadow: var(--shadow-lg);
+}
+
+.consent-banner h2,
+.consent-banner p {
+    margin: 0;
+}
+
+.consent-banner h2 {
+    font-size: 1rem;
+}
+
+.consent-banner p {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.consent-banner a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.consent-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0.65rem;
+}
+
 body::before {
     content: '';
     position: fixed;
@@ -93,6 +137,39 @@ button,
 
 main {
     display: block;
+}
+
+.privacy-page {
+    min-height: 100vh;
+    padding: 5rem 0;
+}
+
+.privacy-content {
+    max-width: 50rem;
+    margin-top: 2rem;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    box-shadow: var(--shadow-md);
+}
+
+.privacy-content h1 {
+    margin-bottom: 0.4rem;
+}
+
+.privacy-content h2 {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+}
+
+.privacy-content p {
+    color: var(--text-soft);
+}
+
+.privacy-content a:not(.btn) {
+    color: var(--accent);
+    text-decoration: underline;
 }
 
 section {
@@ -1084,5 +1161,26 @@ p {
     .hero-description,
     .contact-card p {
         font-size: 0.98rem;
+    }
+
+    .consent-banner,
+    .consent-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
     }
 }
