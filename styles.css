@@ -569,8 +569,50 @@ p {
 }
 
 .projects,
+.beyond,
 .contact {
     padding: 4.5rem 0;
+}
+
+.beyond-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+    border-radius: 1.5rem;
+    background: rgba(248, 250, 252, 0.72);
+    box-shadow: var(--shadow-sm);
+}
+
+.beyond-icon {
+    width: 3.4rem;
+    height: 3.4rem;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #1e2a2e, #4b5a45);
+}
+
+.beyond-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.beyond-card p {
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 560px) {
+    .beyond-card {
+        flex-direction: column;
+    }
 }
 
 .projects {
@@ -579,7 +621,7 @@ p {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.25rem;
 }
 

@@ -4,21 +4,22 @@ A modern, responsive studio website for Narrivex and its AI product portfolio.
 
 ## About
 
-Narrivex is a product studio focused on AI tools for investigation, writing, engineering analysis, and AGI research.
+Narrivex is a product studio focused on AI tools for investigation, writing, and engineering analysis.
 
 ## Projects
 
 - **SpecuLab** — AI-assisted investigation studio for case analysis, evidence synthesis, and pattern discovery.
-- **AuthorBeacon** — AI-assisted writing studio for drafting, revision, and creative development.
 - **SpecQc** — AI-assisted engineering tool for specifications and standards analysis.
-- **Emma** — AGI research focused on architectures, methods, and experimental approaches.
+- **AuthorBeacon** — AI-assisted writing studio for drafting, revision, and creative development.
+
+Emma, an earlier AGI research effort, has been discontinued.
 
 
 ## Features
 
 - Modern, polished landing page layout
 - Fully responsive across mobile, tablet, and desktop
-- Clear project cards for all four Narrivex products
+- Clear project cards for all three active Narrivex products
 - SEO-friendly semantic HTML and social sharing metadata
 - Lightweight static site deployed through GitHub Pages
 
