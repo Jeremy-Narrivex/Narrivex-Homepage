@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const analyticsScript = document.createElement('script');
         analyticsScript.id = 'google-analytics';
         analyticsScript.async = true;
-        analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3WRZ8ZZQ9X';
+        analyticsScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-T9KJRGGKFY';
         document.head.append(analyticsScript);
 
         window.dataLayer = window.dataLayer || [];
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.dataLayer.push(arguments);
         };
         window.gtag('js', new Date());
-        window.gtag('config', 'G-3WRZ8ZZQ9X');
+        window.gtag('config', 'G-T9KJRGGKFY');
     };
 
     const setAnalyticsConsent = consent => {
