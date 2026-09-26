@@ -573,6 +573,33 @@ p {
     padding: 4.5rem 0;
 }
 
+.affiliate-disclosure {
+    padding: 0 0 4.5rem;
+}
+
+.affiliate-disclosure-content {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    border-left: 4px solid var(--accent-3);
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.affiliate-disclosure-content h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+}
+
+.affiliate-disclosure-content p {
+    margin: 0;
+    color: var(--text-soft);
+}
+
+.affiliate-disclosure-content a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
 .projects {
     position: relative;
 }
