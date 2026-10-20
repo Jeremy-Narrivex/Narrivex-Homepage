@@ -711,6 +711,12 @@ p {
     font-size: 1.35rem;
 }
 
+.project-tagline {
+    margin: 0;
+    font-weight: 700;
+    color: var(--text);
+}
+
 .project-status {
     display: inline-flex;
     align-items: center;
