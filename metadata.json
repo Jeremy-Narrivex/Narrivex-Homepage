@@ -1,6 +1,6 @@
 {
   "name": "Narrivex",
-  "description": "Narrivex is a focused studio of AI products for investigation and engineering analysis.",
+  "description": "Narrivex builds focused software for investigation and engineering analysis, including SpecuLab and SpecQC.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
