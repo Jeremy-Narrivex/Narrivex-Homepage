@@ -660,6 +660,22 @@ p {
     box-shadow: var(--shadow-md);
 }
 
+.project-thumb {
+    display: block;
+    margin: -0.4rem -0.4rem 0.2rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.project-thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: top left;
+}
+
 .project-icon {
     width: 4.35rem;
     height: 4.35rem;
