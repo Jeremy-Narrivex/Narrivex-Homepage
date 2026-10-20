@@ -10,7 +10,6 @@ Narrivex is a product studio focused on AI tools for investigation, writing, and
 
 - **SpecuLab** — AI-assisted investigation studio for case analysis, evidence synthesis, and pattern discovery.
 - **SpecQc** — AI-assisted engineering tool for specifications and standards analysis.
-- **AuthorBeacon** — AI-assisted writing studio for drafting, revision, and creative development.
 
 Emma, an earlier AGI research effort, has been discontinued.
 
