@@ -1,10 +1,10 @@
 # Narrivex Website
 
-The Narrivex website is a responsive static site introducing the studio and its SpecQC product. It is built with HTML, CSS, and vanilla JavaScript and does not require a package manager or build step.
+The Narrivex website is a responsive static site introducing the studio and its MixIQ product. It is built with HTML, CSS, and vanilla JavaScript and does not require a package manager or build step.
 
 ## Products
 
-- **SpecQC** — a concrete specification review tool in development for producers and quality-control managers.
+- **MixIQ** — a concrete specification review tool in development for producers and quality-control managers.
 
 ## Local preview
 
@@ -27,11 +27,11 @@ GitHub Pages should use **GitHub Actions** as its build and deployment source. T
 ## Site map
 
 - `index.html` — studio landing page and product overview
-- `specqc.html` — SpecQC product page
+- `specqc.html` — MixIQ product page
 - `privacy.html` — privacy policy
 - `404.html` — custom not-found page
 - `styles.css` and `script.js` — shared styling and site behavior
-- `assets/screenshots/` — SpecQC screenshots used on the product page and homepage
+- `assets/screenshots/` — MixIQ screenshots used on the product page and homepage
 - `sitemap.xml` and `robots.txt` — search engine discovery files
 - `.github/workflows/static.yml` — validation and deployment workflow
 
